@@ -1,7 +1,7 @@
 import type { CorsOptions } from 'cors';
 import config from '@/config';
 
-export const corsOptions: CorsOptions = {
+const corsOptions: CorsOptions = {
   origin(origin, callback) {
     if (
       !origin ||
@@ -19,3 +19,5 @@ export const corsOptions: CorsOptions = {
     }
   },
 };
+
+export default corsOptions;
