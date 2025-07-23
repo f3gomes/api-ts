@@ -1,5 +1,5 @@
 import type { CorsOptions } from 'cors';
-import config from '@/config';
+import config from './index';
 
 const corsOptions: CorsOptions = {
   origin(origin, callback) {

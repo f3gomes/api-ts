@@ -5,10 +5,10 @@ import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import corsOptions from './config/cors';
 
-import config from '@/config';
-import limiter from '@/lib/express-rate-limit';
+import config from './config';
+import limiter from './lib/express-rate-limit';
 
-import v1Routes from '@/routes/v1';
+import v1Routes from './routes/v1';
 
 const app = express();
 
@@ -31,7 +31,7 @@ app.use(limiter);
     app.use('/api/v1', v1Routes);
 
     app.listen(config.PORT, () => {
-      console.log(`Servidor online: http://localhost:${config.PORT}`);
+      console.log(`Servidor online: http://localhost:${config.PORT}/api/v1`);
     });
   } catch (error) {
     console.log('Erro ao inciar o servidor', error);
@@ -52,3 +52,5 @@ const handleServerShutdown = async () => {
 
 process.on('SIGTERM', handleServerShutdown);
 process.on('SIGINT', handleServerShutdown);
+
+export default app;
