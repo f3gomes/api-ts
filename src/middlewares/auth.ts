@@ -1,10 +1,11 @@
-import { NextFunction } from 'express';
+import config from '@/config';
 import jwt from 'jsonwebtoken';
+import { NextFunction } from 'express';
 
 const auth = (req: any, res: any, next: NextFunction) => {
   let token = '';
   const { authorization } = req.headers;
-  const secret = process.env.JWT_SECRET_KEY!;
+  const secret = config.JWT_SECRET_KEY!;
 
   if (!authorization)
     return res.status(401).json({
