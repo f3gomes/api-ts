@@ -31,13 +31,24 @@ app.use(limiter);
     app.use('/api/v1', v1Routes);
 
     app.listen(config.PORT, () => {
-      console.log(`Server is running on port http://localhost:${config.PORT}`);
+      console.log(`Servidor online: http://localhost:${config.PORT}`);
     });
   } catch (error) {
-    console.log('Failed to start the server', error);
+    console.log('Erro ao inciar o servidor', error);
 
     if (config.NODE_ENV === 'production') {
       process.exit(1);
     }
   }
 })();
+
+const handleServerShutdown = async () => {
+  try {
+    console.log('Servidor Desligado');
+  } catch (error) {
+    console.log('Erro durante o desligamento', error);
+  }
+};
+
+process.on('SIGTERM', handleServerShutdown);
+process.on('SIGINT', handleServerShutdown);
