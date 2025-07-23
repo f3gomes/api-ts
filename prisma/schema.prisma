@@ -13,3 +13,31 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id              String      @id @default(uuid())
+  userName        String      @unique
+  password        String
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  @@map("users")
+}
+
+model Courses {
+  id              String      @id @default(uuid())
+  title           String
+  description     String
+  imageUrl        String
+  duration        Int
+  status          Status
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  @@map("courses")
+}
+
+enum Status {
+  ATIVO
+  INATIVO
+}
