@@ -24,13 +24,13 @@ model User {
   @@map("users")
 }
 
-model Courses {
+model Course {
   id              String      @id @default(uuid())
   title           String
   description     String
   imageUrl        String
   duration        Int
-  status          Status
+  status          Status      @default(ATIVO)
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
 
