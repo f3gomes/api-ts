@@ -1,5 +1,5 @@
-import config from '@/config';
-import { PrismaClient } from '@prisma/client';
+import config from '../config';
+import { PrismaClient } from '../generated/prisma';
 
 const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
 

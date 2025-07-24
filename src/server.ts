@@ -1,22 +1,21 @@
 import cors from 'cors';
 import helmet from 'helmet';
-import express from 'express';
+import express, { Request, Response } from 'express';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import corsOptions from './config/cors';
 
 import config from './config';
 import limiter from './lib/express-rate-limit';
-
-import v1Routes from './routes/v1';
+import { userRouter } from './routes/v1/';
 
 const app = express();
 
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(cookieParser());
+
 app.use(
   compression({
     threshold: 1024,
@@ -28,11 +27,17 @@ app.use(limiter);
 
 (async () => {
   try {
-    app.use('/api/v1', v1Routes);
+    app.get('/', (_req: Request, res: Response) => {
+      res.json({
+        message: 'API is on!',
+      });
+    });
 
     app.listen(config.PORT, () => {
-      console.log(`Servidor online: http://localhost:${config.PORT}/api/v1`);
+      console.log(`Servidor online: http://localhost:${config.PORT}`);
     });
+
+    app.use('/api/v1', userRouter);
   } catch (error) {
     console.log('Erro ao inciar o servidor', error);
 
@@ -41,16 +46,5 @@ app.use(limiter);
     }
   }
 })();
-
-const handleServerShutdown = async () => {
-  try {
-    console.log('Servidor Desligado');
-  } catch (error) {
-    console.log('Erro durante o desligamento', error);
-  }
-};
-
-process.on('SIGTERM', handleServerShutdown);
-process.on('SIGINT', handleServerShutdown);
 
 export default app;

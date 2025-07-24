@@ -1,16 +1,9 @@
-import { Router } from 'express';
-import { StatusCodes } from 'http-status-codes';
+import express from 'express';
+import userController from '../../controllers/user.controller';
+import { validateData } from '../../middlewares/validation';
+import { userSchema } from '../../schemas/user.schema';
 
-const router = Router();
+export const userRouter = express.Router();
 
-router.get('/', (req, res) => {
-  res.status(StatusCodes.OK).json({
-    message: 'API is online',
-    status: 'ok',
-    version: '1.0.0',
-    docs: '',
-    timestamp: new Date().toISOString(),
-  });
-});
-
-export default router;
+userRouter.post('/login', userController.login);
+userRouter.post('/user/new', validateData(userSchema), userController.postUser);
