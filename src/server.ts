@@ -7,7 +7,8 @@ import corsOptions from './config/cors';
 
 import config from './config';
 import limiter from './lib/express-rate-limit';
-import { userRouter } from './routes/v1/';
+import { userRouter } from './routes/v1/user.route';
+import { courseRouter } from './routes/v1/course.route';
 
 const app = express();
 
@@ -38,6 +39,7 @@ app.use(limiter);
     });
 
     app.use('/api/v1', userRouter);
+    app.use('/api/v1', courseRouter);
   } catch (error) {
     console.log('Erro ao inciar o servidor', error);
 
