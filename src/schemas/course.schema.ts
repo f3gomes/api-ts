@@ -5,5 +5,4 @@ export const courseSchema = z.object({
   description: z.string().min(5, {}),
   imageUrl: z.string(),
   duration: z.number(),
-  status: z.enum(["ATIVO", "INATIVO"]),
 });
