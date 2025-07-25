@@ -4,10 +4,10 @@ import { StatusCodes } from 'http-status-codes';
 import userService from '../services/user.service';
 
 const login = async (req: Request, res: Response): Promise<any> => {
-  const { password } = req.body;
+  const { userName, password } = req.body;
 
   try {
-    const user = await userService.findUserByUserName(req.body.userName);
+    const user = await userService.findUserByUserName(userName);
 
     if (!user) {
       return res
@@ -21,13 +21,14 @@ const login = async (req: Request, res: Response): Promise<any> => {
     );
 
     if (!isPasswordMatch) {
-      return res.status(401).json({ message: 'Senha incorreta' });
+      return res
+        .status(StatusCodes.UNAUTHORIZED)
+        .json({ message: 'Senha incorreta' });
     }
 
     const token = await userService.generateToken(user);
-    const { userName } = user;
 
-    return res.json({ userName, token });
+    return res.status(StatusCodes.OK).json({ userName, token });
   } catch (error) {
     console.error(error);
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error });
