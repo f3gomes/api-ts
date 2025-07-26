@@ -2,7 +2,7 @@ import { prisma } from '../lib/client';
 import { Course } from '../generated/prisma';
 
 const createCourse = async (data: Course): Promise<any> => {
-  const { title, description, duration, imageUrl } = data;
+  const { title, description, duration, imageUrl, status } = data;
 
   const course = await prisma.course.create({
     data: {
@@ -10,6 +10,7 @@ const createCourse = async (data: Course): Promise<any> => {
       description,
       duration,
       imageUrl,
+      status,
     },
   });
 
@@ -19,7 +20,7 @@ const createCourse = async (data: Course): Promise<any> => {
 const findAllCourses = async (): Promise<Course[]> => {
   const courses = await prisma.course.findMany({
     orderBy: {
-      createdAt: 'asc',
+      createdAt: 'desc',
     },
   });
 
