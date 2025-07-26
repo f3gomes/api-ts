@@ -105,7 +105,7 @@ DATABASE_URL="postgresql://postgres:postgres@localhost:5432/api_ts_db?schema=pub
 ## 🌐 Acessando a aplicação hospedada
 
 A API está ativa em:  
-**https://api‑ts‑amber.vercel.app/**
+**[https://api‑ts‑amber.vercel.app/](https://api-ts-amber.vercel.app/)**
 
 Você pode consumir os endpoints diretamente por esta URL (por exemplo, GET `/health`, `/users`, etc., conforme sua rota exposta).
 
