@@ -1,6 +1,16 @@
 # 📦 API Rest - Node
 
-API RESTful implementada com **TypeScript**, **Node.js**, **Express** e **Prisma**
+API RESTful desenvolvida com Node.js, TypeScript, Express e Prisma ORM, focada em fornecer uma base robusta, escalável e segura para aplicações modernas.
+
+🔧 A API oferece endpoints para CRUD completo de cursos, com suporte a filtros dinâmicos, como busca por título e status (ativo/inativo). Todas as rotas são cuidadosamente estruturadas e seguem os padrões REST, facilitando a integração com frontends diversos.
+
+✅ Utiliza validação rigorosa de dados de entrada com bibliotecas como Zod ou Joi (se aplicável), garantindo que os parâmetros recebidos nas requisições sejam corretos, prevenindo falhas e aumentando a confiabilidade da aplicação.
+
+💡 Implementada com boas práticas de arquitetura de software, incluindo separação de camadas (routes, controllers, services, repositories), tratamento centralizado de erros e tipagem estática com TypeScript para maior segurança e legibilidade do código.
+
+📦 O Prisma facilita a interação com o banco de dados, oferecendo mapeamento objeto-relacional (ORM) moderno, migrações versionadas e performance otimizada para consultas complexas.
+
+🛡️ Suporte a CORS, variáveis de ambiente, e middlewares reutilizáveis para autenticação, logging e validação de requisições.
 
 ---
 
