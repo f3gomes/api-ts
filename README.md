@@ -1,7 +1,6 @@
 # 📦 API Rest - Node
 
-API RESTful implementada com **TypeScript**, **Node.js**, **Express** e **Prisma**, com deploy ativo na URL pública:  
-➡️ [https://api‑ts‑amber.vercel.app/](https://api‑ts‑amber.vercel.app/)
+API RESTful implementada com **TypeScript**, **Node.js**, **Express** e **Prisma**
 
 ---
 
