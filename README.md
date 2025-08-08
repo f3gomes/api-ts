@@ -14,39 +14,23 @@ API RESTful desenvolvida com Node.js, TypeScript, Express e Prisma ORM, focada e
 
 ---
 
-## 🧑‍💻 Rodando o projeto localmente
-
-1. Clone o repositório:
-
-   ```bash
-   git clone https://github.com/f3gomes/api-ts.git
-
-   cd api-ts
-   ```
-
-2. Instale dependências:
-
-   ```bash
-   npm install
-   ```
-
 ## 🐳 Executando com Docker Compose
 
 Para executar via Docker (API + PostgreSQL em containers):
 
-3. Para iniciar:
+1. Para iniciar:
 
    ```bash
    docker compose up
    ```
 
-Isso iniciará tanto o banco quanto a API na porta **3333**: http://localhost:3333
+Isso instalará as dependências, criará as variáveis de ambiente e iniciará tanto o banco quanto a API na porta **3333**: http://localhost:3333
 
 ---
 
 ## 🧑‍💻 Executando (sem Docker)
 
-Crie um arquivo `.env` na raiz com as seguintes variáveis (exemplo):
+1. Crie um arquivo `.env` na raiz com as seguintes variáveis (exemplo):
 
 ```env
 PORT=3333
@@ -55,6 +39,12 @@ JWT_SECRET_KEY=mysupersecret
 APP_URL=http://localhost:3000
 DATABASE_URL="postgresql://postgres:postgres@localhost:5432/api_ts_db?schema=public"
 ```
+
+2. Instale dependências:
+
+   ```bash
+   npm install
+   ```
 
 3. Gere o client do Prisma:
 
